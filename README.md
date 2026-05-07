@@ -1,43 +1,94 @@
-☁️ Cloud DevOps Multi-Stage Pipeline — AWS + Terraform + Docker + CI/CD
+🚀 Flask Cloud CI/CD Pipeline — AWS + Docker + GitHub Actions
 
-End-to-end multi-stage DevOps pipeline simulating a production cloud deployment workflow using AWS, Terraform, Docker, and CI/CD principles.
+A fully working CI/CD pipeline that builds, tests, containerizes, and deploys a Flask application using AWS infrastructure and GitHub Actions automation.
 
-🚀 Pipeline Overview
+---
 
-This project implements a multi-stage deployment pipeline:
+## 📌 Project Overview
 
-Stage 1 — Infrastructure Provisioning
+This project demonstrates a real-world DevOps workflow where a Flask application is:
 
-Terraform provisions AWS infrastructure (EC2, IAM, Security Groups)
+- Containerized using Docker
+- Stored in Amazon ECR
+- Deployed on an AWS EC2 instance
+- Automatically built and pushed via GitHub Actions CI/CD pipeline
 
-Stage 2 — Application Build
+Each push to the `main` branch triggers an automated deployment pipeline.
 
-Flask app is containerized using Docker
+---
 
-Stage 3 — Image Registry
+## 🧱 Architecture
 
-Docker image is pushed to Amazon ECR
+GitHub Repository  
+↓  
+GitHub Actions (CI/CD Pipeline)  
+↓  
+Docker Build  
+↓  
+Amazon ECR (Container Registry)  
+↓  
+AWS EC2 (Application Runtime)
 
-Stage 4 — Deployment
+---
 
-EC2 instance pulls and runs the containerized application
+## ⚙️ Tech Stack
 
-🧱 Architecture
-AWS EC2 (Compute Layer)
-Terraform (Infrastructure as Code)
-Docker (Containerization)
-Amazon ECR (Container Registry)
-IAM Roles & Policies
-AWS Systems Manager (optional access layer)
-🔄 CI/CD Concept (Manual Pipeline Simulation)
+- Python (Flask)
+- Docker
+- AWS EC2
+- Amazon ECR
+- Terraform (Infrastructure as Code)
+- GitHub Actions (CI/CD)
+- AWS IAM
 
-Although not fully automated yet, this project simulates a CI/CD pipeline:
+---
 
-Build → Docker
-Store → ECR
-Deploy → EC2
-🎯 Resultado
+## 🔄 CI/CD Pipeline Flow
 
-👉 Application running in the cloud
-👉 Accessible via public EC2 IP on port 5000
-👉 Fully containerized deployment
+On every push to `main`:
+
+1. GitHub Actions is triggered
+2. Docker image is built
+3. Image is pushed to Amazon ECR
+4. EC2 instance pulls and runs latest version
+
+---
+
+## 📦 Run Locally
+
+### Build image
+```bash
+docker build -t flask-app .
+Run container
+docker run -p 5000:5000 flask-app
+Access app
+http://localhost:5000
+☁️ AWS Deployment
+Terraform
+
+Initialize infrastructure:
+
+terraform init
+
+Deploy AWS resources:
+
+terraform apply
+🔐 AWS Resources Used
+EC2 (Ubuntu server)
+ECR (Docker registry)
+IAM roles & permissions
+Security Groups
+🧠 Problems Solved
+Docker permission issues on EC2
+ECR authentication setup
+Terraform deployment errors
+Git push conflicts
+CI/CD pipeline debugging
+Container networking issues
+🎯 Key Learnings
+Cloud infrastructure with AWS
+Infrastructure as Code (Terraform)
+CI/CD automation with GitHub Actions
+Docker container lifecycle
+AWS IAM and permissions model
+Real-world DevOps debugging
