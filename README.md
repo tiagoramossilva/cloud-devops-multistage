@@ -81,23 +81,23 @@ terraform apply
 ```
 
 ## 🔐 AWS Resources Used
-EC2 (Ubuntu server)
-ECR (Docker registry)
-IAM roles & permissions
-Security Groups
+- EC2 (Ubuntu server)
+- ECR (Docker registry)
+- IAM roles & permissions
+- Security Groups
 
 ## 🧠 Problems Solved
-Docker permission issues on EC2
-ECR authentication setup
-Terraform deployment errors
-Git push conflicts
-CI/CD pipeline debugging
-Container networking issues
+- Docker permission issues on EC2
+- ECR authentication setup
+- Terraform deployment errors
+- Git push conflicts
+- CI/CD pipeline debugging
+- Container networking issues
 
 ## 🎯 Key Learnings
-Cloud infrastructure with AWS
-Infrastructure as Code (Terraform)
-CI/CD automation with GitHub Actions
-Docker container lifecycle
-AWS IAM and permissions model
-Real-world DevOps debugging
+- Cloud infrastructure with AWS
+- Infrastructure as Code (Terraform)
+- CI/CD automation with GitHub Actions
+- Docker container lifecycle
+- AWS IAM and permissions model
+- Real-world DevOps debugging
