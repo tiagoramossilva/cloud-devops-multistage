@@ -59,33 +59,42 @@ On every push to `main`:
 ### Build image
 ```bash
 docker build -t flask-app .
+```
 Run container
+```
 docker run -p 5000:5000 flask-app
+```
 Access app
+```
 http://localhost:5000
+```
 ☁️ AWS Deployment
 Terraform
 
 Initialize infrastructure:
-
+```
 terraform init
-
+```
 Deploy AWS resources:
-
+```
 terraform apply
-🔐 AWS Resources Used
+```
+
+## 🔐 AWS Resources Used
 EC2 (Ubuntu server)
 ECR (Docker registry)
 IAM roles & permissions
 Security Groups
-🧠 Problems Solved
+
+## 🧠 Problems Solved
 Docker permission issues on EC2
 ECR authentication setup
 Terraform deployment errors
 Git push conflicts
 CI/CD pipeline debugging
 Container networking issues
-🎯 Key Learnings
+
+## 🎯 Key Learnings
 Cloud infrastructure with AWS
 Infrastructure as Code (Terraform)
 CI/CD automation with GitHub Actions
