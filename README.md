@@ -1,19 +1,20 @@
 ## 🚀 Cloud CI/CD Pipeline on AWS
 
-A fully working CI/CD pipeline that builds, tests, containerizes, and deploys a Flask application using AWS infrastructure and GitHub Actions automation.
+This project is a fully automated CI/CD pipeline that builds, tests, scans, containerizes, and deploys a Flask application to AWS using Terraform, Docker, GitHub Actions, and EC2.
 
 ---
 
 ## 📌 Project Overview
 
-This project demonstrates a real-world DevOps workflow where a Flask application is:
+A Flask application is deployed through a complete DevOps pipeline:
 
-- Containerized using Docker
+- Dockerized application
 - Stored in Amazon ECR
-- Deployed on an AWS EC2 instance
-- Automatically built and pushed via GitHub Actions CI/CD pipeline
+- Deployed on AWS EC2
+- Fully automated CI/CD using GitHub Actions
+- Infrastructure managed with Terraform
 
-Each push to the `main` branch triggers an automated deployment pipeline.
+Every push to `main` triggers the full pipeline automatically.
 
 ---
 
@@ -23,11 +24,11 @@ GitHub Repository
 ↓  
 GitHub Actions (CI/CD Pipeline)  
 ↓  
-Docker Build  
+Build + Security Scan (Trivy)  
 ↓  
 Amazon ECR (Container Registry)  
 ↓  
-AWS EC2 (Application Runtime)
+AWS EC2 (Docker Runtime)
 
 ---
 
@@ -35,28 +36,30 @@ AWS EC2 (Application Runtime)
 
 - Python (Flask)
 - Docker
+- Terraform
 - AWS EC2
 - Amazon ECR
-- Terraform (Infrastructure as Code)
-- GitHub Actions (CI/CD)
 - AWS IAM
+- GitHub Actions
+- Trivy (Security Scanner)
 
 ---
 
-## 🔄 CI/CD Pipeline Flow
+## 📋 Prerequisites
 
-On every push to `main`:
+Before running locally or deploying, install:
 
-1. GitHub Actions is triggered
-2. Docker image is built
-3. Image is pushed to Amazon ECR
-4. EC2 instance pulls and runs latest version
+- Docker
+- Terraform
+- AWS CLI
+- Git
+- AWS Account configured (`aws configure`)
 
 ---
 
-## 📦 Run Locally
+## 🧪 1. Run Application Locally
 
-### Build image
+Build Docker image
 ```bash
 docker build -t flask-app .
 ```
@@ -64,40 +67,69 @@ Run container
 ```
 docker run -p 5001:5000 flask-app
 ```
-Access app
+Access application
 ```
 http://localhost:5001
 ```
-☁️ AWS Deployment
-Terraform
 
-Initialize infrastructure:
+Expected output:
+CI/CD Multi-Stage Pipeline Running 🚀
+
+## ☁️ 2. Provision AWS Infrastructure (Terraform)
+
+Initialize Terraform
 ```
 terraform init
 ```
-Deploy AWS resources:
+Create infrastructure
 ```
 terraform apply
 ```
 
-## 🔐 AWS Resources Used
-- EC2 (Ubuntu server)
-- ECR (Docker registry)
-- IAM roles & permissions
-- Security Groups
+This will provision:
 
-## 🧠 Problems Solved
-- Docker permission issues on EC2
-- ECR authentication setup
-- Terraform deployment errors
-- Git push conflicts
-- CI/CD pipeline debugging
-- Container networking issues
+- EC2 instance
+- Security Group (port 5000 open)
+- IAM Role (ECR access)
+- User-data bootstrap (Docker + deployment)
+- Get deployed URL
 
-## 🎯 Key Learnings
-- Cloud infrastructure with AWS
-- Infrastructure as Code (Terraform)
-- CI/CD automation with GitHub Actions
-- Docker container lifecycle
-- AWS IAM and permissions model
-- Real-world DevOps debugging
+Example:
+```
+http://3.xx.xx.xx:5000
+```
+
+## 🔄 3. CI/CD Pipeline Execution
+
+Trigger pipeline
+
+Any push to main:
+```
+git add .
+git commit -m "trigger pipeline"
+git push origin main
+```
+
+Pipeline stages:
+1. Build
+Docker image is built
+2. Security Scan
+Trivy scans vulnerabilities
+3. Push
+Image is pushed to Amazon ECR
+4. Deploy
+EC2 pulls latest image
+Container is restarted
+
+## 🔐 5. AWS Components Used
+EC2 → application runtime
+ECR → Docker image registry
+IAM → permissions
+Security Groups → network access
+
+## 🧠 6. Key Engineering Decisions
+- EC2 chosen for simplicity and control
+- ECR used for secure Docker storage
+- Terraform used for reproducible infrastructure
+- GitHub Actions for CI/CD automation
+- Trivy integrated for security scanning
