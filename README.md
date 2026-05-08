@@ -1,4 +1,4 @@
-🚀 Flask Cloud CI/CD Pipeline — AWS + Docker + GitHub Actions
+## 🚀 Flask Cloud CI/CD Pipeline — AWS + Docker + GitHub Actions
 
 A fully working CI/CD pipeline that builds, tests, containerizes, and deploys a Flask application using AWS infrastructure and GitHub Actions automation.
 
