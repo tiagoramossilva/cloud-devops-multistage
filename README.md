@@ -62,11 +62,11 @@ docker build -t flask-app .
 ```
 Run container
 ```
-docker run -p 5000:5000 flask-app
+docker run -p 5001:5000 flask-app
 ```
 Access app
 ```
-http://localhost:5000
+http://localhost:5001
 ```
 ☁️ AWS Deployment
 Terraform
